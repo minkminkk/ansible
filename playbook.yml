@@ -7,7 +7,7 @@
     - include: pre-tasks/apt-ppa-repos.yml
   tasks:
     - include: tasks/ssh.yml
-    - include: tasks/core-setup.yml
-    - include: tasks/git-setup.yml
-    - include: tasks/ibus-setup.yml
-    - include: tasks/zsh-setup.yml
+    - include: tasks/core.yml
+    - include: tasks/git.yml
+    - include: tasks/ibus.yml
+    - include: tasks/zsh.yml
