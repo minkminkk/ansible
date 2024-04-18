@@ -1,0 +1,10 @@
+- hosts: localhost
+  vars:
+    - local_user: minh
+  pre_tasks:
+    - include: pre-tasks/apt-ppa-repos.yml
+  tasks:
+    - include: tasks/core-setup.yml
+    - include: tasks/git-setup.yml
+    - include: tasks/ibus-setup.yml
+    - include: tasks/zsh-setup.yml

@@ -1,0 +1,28 @@
+# - name: Install ibus
+#   become: true
+#   apt:
+#     pkg:
+#       - ibus
+#   tags:
+    # - ibus
+
+# - name: Restart ibus
+#   become: true
+#   shell:
+#     command: ibus restart
+#   tags:
+#     - ibus
+
+# - name: Config for ibus
+#   environment:
+#     - DCONF_PROFILE=ibus
+#   shell:
+#     command: dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+#   tags:
+#     - ibus
+
+# - name: Config for ibus
+#   shell:
+#     command: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+#   tags:
+#     - ibus
