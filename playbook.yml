@@ -1,9 +1,12 @@
 - hosts: localhost
   vars:
-    - local_user: minh
+    - local_user: "{{ lookup('env', 'USER') }}"
+    - src_ssh_key: "./.ssh/id_ed25519_personal"
+    - dest_ssh_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519_personal"
   pre_tasks:
     - include: pre-tasks/apt-ppa-repos.yml
   tasks:
+    - include: tasks/ssh.yml
     - include: tasks/core-setup.yml
     - include: tasks/git-setup.yml
     - include: tasks/ibus-setup.yml
