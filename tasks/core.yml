@@ -1,3 +1,5 @@
 - name: Download apt packages (curl)
-  apt: name=curl
+  become: true
+  apt:
+    name: curl
   tags: core

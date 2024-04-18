@@ -1,6 +1,8 @@
 - hosts: localhost
   vars:
     - local_user: "{{ lookup('env', 'USER') }}"
+    - git_username: "minkminkk"
+    - git_user_email: "mrminhlunvn1@gmail.com"
     - src_ssh_key: "./.ssh/id_ed25519_personal"
     - dest_ssh_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519_personal"
   pre_tasks:
@@ -9,11 +11,16 @@
   tasks:
     - name: SET UP SSH
       include_tasks: tasks/ssh.yml
+      tags: core
     - name: SET UP CORE PACKAGES
       include_tasks: tasks/core.yml
-    - name: CONFIGURE GIT
+      tags: core
+    - name: SET UP GIT
       include_tasks: tasks/git.yml
+      tags: git-personal
     - name: SET UP IBUS (VN typing)
       include_tasks: tasks/ibus.yml
+      tags: ibus
     - name: SET UP ZSH
       include_tasks: tasks/zsh.yml
+      tags: zsh
