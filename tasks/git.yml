@@ -1,18 +1,18 @@
-- name: Git personal user email
+- name: Configure Git personal user email
   git_config:
     name: user.email
     scope: global
     value: "mrminhlunvn1@gmail.com"
   tags: git-personal
 
-- name: Git personal user name
+- name: Configure Git personal user name
   git_config:
     name: user.name
     scope: global
     value: "minkminkk"
   tags: git-personal
 
-- name: Git init default branch
+- name: Configure Git init default branch
   git_config:
     name: init.defaultBranch
     scope: global

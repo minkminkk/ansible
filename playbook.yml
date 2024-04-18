@@ -4,10 +4,16 @@
     - src_ssh_key: "./.ssh/id_ed25519_personal"
     - dest_ssh_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519_personal"
   pre_tasks:
-    - include: pre-tasks/apt-ppa-repos.yml
+    - name: Add apt repos
+      include_tasks: pre-tasks/apt-ppa-repos.yml
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/core.yml
-    - include: tasks/git.yml
-    - include: tasks/ibus.yml
-    - include: tasks/zsh.yml
+    - name: SET UP SSH
+      include_tasks: tasks/ssh.yml
+    - name: SET UP CORE PACKAGES
+      include_tasks: tasks/core.yml
+    - name: CONFIGURE GIT
+      include_tasks: tasks/git.yml
+    - name: SET UP IBUS (VN typing)
+      include_tasks: tasks/ibus.yml
+    - name: SET UP ZSH
+      include_tasks: tasks/zsh.yml
