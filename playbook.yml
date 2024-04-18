@@ -5,9 +5,12 @@
     - git_user_email: "mrminhlunvn1@gmail.com"
     - src_ssh_key: "./.ssh/id_ed25519_personal"
     - dest_ssh_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519_personal"
+    - python_version: "3.11"
   pre_tasks:
-    - name: Add apt repos
-      include_tasks: pre-tasks/apt-ppa-repos.yml
+    - name: Update apt
+      become: true
+      apt:
+        update_cache: yes
   tasks:
     - name: SET UP SSH
       include_tasks: tasks/ssh.yml
@@ -18,6 +21,9 @@
     - name: SET UP GIT
       include_tasks: tasks/git.yml
       tags: git-personal
+    - name: SET UP PYTHON
+      include_tasks: tasks/python.yml
+      tags: python
     - name: SET UP IBUS (VN typing)
       include_tasks: tasks/ibus.yml
       tags: ibus

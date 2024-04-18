@@ -1,3 +1,9 @@
+# - name: Add ibus apt repository
+#   become: true
+#   apt_repository:
+#     repo: ppa:bamboo-engine/ibus-bamboo
+#     state: present
+
 # - name: Install ibus
 #   become: true
 #   apt:
