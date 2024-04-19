@@ -38,3 +38,11 @@
   become: true
   shell: chsh -s $(which zsh) $(whoami)
   tags: terminal
+
+- name: Install command-line tools (tmux, fzf)
+  become: true
+  apt:
+    name:
+      - tmux
+      - fzf
+  tags: terminal

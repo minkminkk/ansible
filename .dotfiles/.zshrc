@@ -74,6 +74,7 @@ plugins=(
     ansible
     git
     jsontools
+    tmux
     zsh-autosuggestions
 )
 
