@@ -2,32 +2,27 @@
   become: true
   apt:
     name: openssh-client
-  tags: ssh
 
 - name: Ensure .ssh directory exists.
   file:
     dest: "{{ dest_ssh_key | dirname }}"
     mode: 0700
     state: directory
-  tags: ssh
 
 - name: Install ssh key private (ask vault password)
   copy:
     src: "{{ src_ssh_key }}"
     dest: "{{ dest_ssh_key }}"
     mode: 0600
-  tags: ssh
 
 - name: Install ssh key public
   copy:
     src: "{{ src_ssh_key }}.pub"
     dest: "{{ dest_ssh_key }}.pub"
     mode: 0644
-  tags: ssh
 
 # TODO: Fix this to work
 # - name: Ensure ssh-agent is working
 #   shell: |
 #     eval "$(ssh-agent -s)"
 #     ssh-add "{{ dest_ssh_key }}"
-#   tags: ssh

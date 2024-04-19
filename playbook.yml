@@ -12,12 +12,14 @@
       apt:
         update_cache: yes
   tasks:
-    - name: SET UP SSH
-      include_tasks: tasks/ssh.yml
-      tags: ssh
     - name: SET UP CORE PACKAGES
       include_tasks: tasks/core.yml
       tags: core
+    - name: SET UP SSH
+      include_tasks: tasks/ssh.yml
+      tags: ssh
+        - ssh
+        - git-personal  # requires ssh
     - name: SET UP GIT
       include_tasks: tasks/git.yml
       tags: git-personal
