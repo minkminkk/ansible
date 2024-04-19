@@ -17,7 +17,7 @@
       tags: core
     - name: SET UP SSH
       include_tasks: tasks/ssh.yml
-      tags: ssh
+      tags:
         - ssh
         - git-personal  # requires ssh
     - name: SET UP GIT

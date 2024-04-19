@@ -3,13 +3,16 @@
   apt_repository:
     repo: ppa:deadsnakes/ppa
     state: present
+  tags: python
 
 - name: Install Python
   become: true
   apt:
     name: "python{{ python_version }}"
+  tags: python
   
 - name: Install Python venv
   become: true
   apt:
     name: "python{{ python_version }}-venv"
+  tags: python
