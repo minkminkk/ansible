@@ -1,3 +1,9 @@
+- name: Install openssh-client
+  become: true
+  apt:
+    name: openssh-client
+  tags: ssh
+
 - name: Ensure .ssh directory exists.
   file:
     dest: "{{ dest_ssh_key | dirname }}"
@@ -18,3 +24,10 @@
     dest: "{{ dest_ssh_key }}.pub"
     mode: 0644
   tags: ssh
+
+# TODO: Fix this to work
+# - name: Ensure ssh-agent is working
+#   shell: |
+#     eval "$(ssh-agent -s)"
+#     ssh-add "{{ dest_ssh_key }}"
+#   tags: ssh
