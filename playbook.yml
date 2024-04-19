@@ -26,9 +26,11 @@
     - name: SET UP PYTHON
       include_tasks: tasks/python.yml
       tags: python
-    - name: SET UP IBUS (VN typing)
-      include_tasks: tasks/ibus.yml
-      tags: ibus
     - name: SET UP ZSH
       include_tasks: tasks/zsh.yml
-      tags: zsh
+      tags: zsha
+    - name: SET UP IBUS (VN typing)
+      include_tasks: tasks/ibus.yml
+      when: ansible_virtualization_type != "wsl"
+        # no need to set up VN typing for Windows
+      tags: ibus
