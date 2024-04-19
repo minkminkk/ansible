@@ -14,7 +14,7 @@
   tasks:
     - name: SET UP SSH
       include_tasks: tasks/ssh.yml
-      tags: core
+      tags: ssh
     - name: SET UP CORE PACKAGES
       include_tasks: tasks/core.yml
       tags: core
