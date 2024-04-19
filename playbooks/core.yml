@@ -1,5 +1,8 @@
-- name: Download apt packages (curl)
+- name: Download apt packages
   become: true
   apt:
-    name: curl
+    name:
+      - build-essential
+      - curl
+      - psutil
   tags: core

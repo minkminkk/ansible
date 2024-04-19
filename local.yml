@@ -1,10 +1,10 @@
 - hosts: localhost
   vars:
-    - local_user: "{{ lookup('env', 'USER') }}"
+    - local_user: "$(whoami)"
     - git_username: "minkminkk"
     - git_user_email: "mrminhlunvn1@gmail.com"
     - src_ssh_key: "./.ssh/id_ed25519_personal"
-    - dest_ssh_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519_personal"
+    - dest_ssh_key: "~/.ssh/id_ed25519_personal"
     - python_version: "3.11"
   pre_tasks:
     - name: Update apt
@@ -30,9 +30,9 @@
       include_tasks: playbooks/python.yml
       tags: python
     
-    - name: SET UP ZSH
-      include_tasks: playbooks/zsh.yml
-      tags: zsh
+    - name: SET UP TERMINAL
+      include_tasks: playbooks/terminal.yml
+      tags: terminal
     
     - name: SET UP IBUS (VN typing)
       include_tasks: playbooks/ibus.yml

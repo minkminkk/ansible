@@ -1,0 +1,40 @@
+- name: Set terminal background color
+  shell: |
+    dconf write /org/gnome/terminal/legacy/profiles:/$(dconf list /org/gnome/terminal/legacy/profiles:/)use-theme-colors false
+    dconf write /org/gnome/terminal/legacy/profiles:/$(dconf list /org/gnome/terminal/legacy/profiles:/)background-color "'rgb(23,20,33)'"
+  tags: terminal
+
+- name: Install zsh
+  become: true
+  apt:
+    name: zsh
+  tags: terminal
+
+- name: Check that the somefile.conf exists
+  stat:
+    path: "~/.oh-my-zsh"
+  register: oh_my_stats
+  tags: terminal
+
+- name: Oh-My-Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: oh_my_stats.stat.exists == False
+  become_user: "{{ local_user }}" # not using whoami to avoid confusion
+  tags: terminal
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags: terminal
+
+- name: Copy .zshrc
+  copy:
+    src: ./.dotfiles/.zshrc
+    dest: "~/.zshrc"
+  tags: terminal
+
+- name: Change shell to zsh
+  become: true
+  shell: chsh -s $(which zsh) $(whoami)
+  tags: terminal
