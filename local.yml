@@ -13,24 +13,24 @@
         update_cache: yes
   tasks:
     - name: SET UP CORE PACKAGES
-      include_tasks: tasks/core.yml
+      include_tasks: playbooks/core.yml
       tags: core
     - name: SET UP SSH
-      include_tasks: tasks/ssh.yml
+      include_tasks: playbooks/ssh.yml
       tags:
         - ssh
         - git-personal  # requires ssh
     - name: SET UP GIT
-      include_tasks: tasks/git.yml
+      include_tasks: playbooks/git.yml
       tags: git-personal
     - name: SET UP PYTHON
-      include_tasks: tasks/python.yml
+      include_tasks: playbooks/python.yml
       tags: python
     - name: SET UP ZSH
-      include_tasks: tasks/zsh.yml
+      include_tasks: playbooks/zsh.yml
       tags: zsh
     - name: SET UP IBUS (VN typing)
-      include_tasks: tasks/ibus.yml
+      include_tasks: playbooks/ibus.yml
       when: ansible_virtualization_type != "wsl"
         # no need to set up VN typing for Windows
       tags: ibus
