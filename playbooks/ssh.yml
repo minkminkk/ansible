@@ -24,10 +24,3 @@
     dest: "{{ dest_ssh_key }}.pub"
     mode: 0644
   tags: *ssh_tags
-
-# TODO: Fix this to work
-# - name: Ensure ssh-agent is working
-#   shell: |
-#     eval "$(ssh-agent -s)"
-#     ssh-add "{{ dest_ssh_key }}"
-#   tags: *ssh_tags

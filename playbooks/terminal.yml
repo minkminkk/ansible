@@ -50,4 +50,4 @@
 - name: Copy tmux config
   copy:
     src: ./.dotfiles/.tmux.conf
-    dest: ./.config/.tmux.conf
+    dest: ~/.config/.tmux.conf
