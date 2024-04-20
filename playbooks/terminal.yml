@@ -46,3 +46,8 @@
       - tmux
       - fzf
   tags: terminal
+
+- name: Copy tmux config
+  copy:
+    src: ./.dotfiles/.tmux.conf
+    dest: ./.config/.tmux.conf
