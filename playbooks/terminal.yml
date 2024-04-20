@@ -2,6 +2,7 @@
   shell: |
     dconf write /org/gnome/terminal/legacy/profiles:/$(dconf list /org/gnome/terminal/legacy/profiles:/)use-theme-colors false
     dconf write /org/gnome/terminal/legacy/profiles:/$(dconf list /org/gnome/terminal/legacy/profiles:/)background-color "'rgb(23,20,33)'"
+  when: ansible_virtualization_type != "wsl"
   tags: terminal
 
 - name: Install zsh
@@ -50,4 +51,4 @@
 - name: Copy tmux config
   copy:
     src: ./.dotfiles/.tmux.conf
-    dest: ~/.config/.tmux.conf
+    dest: ~/.tmux.conf
