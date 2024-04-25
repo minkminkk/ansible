@@ -106,6 +106,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cook="~/Desktop/code"
+alias sd='cd $(find ~ -mindepth 1 -maxdepth 5 -type d | fzf --margin 10)'
 
 # Enter main tmux session 
 tmux new-session -A -s main
