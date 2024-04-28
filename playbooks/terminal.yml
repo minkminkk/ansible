@@ -29,6 +29,12 @@
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags: terminal
 
+- name: Install zsh-syntax-highlighitng
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+  tags: terminal
+
 - name: Copy .zshrc
   copy:
     src: ./.dotfiles/.zshrc
