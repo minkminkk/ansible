@@ -92,5 +92,11 @@ export PYTHONDONTWRITEBYTECODE=1
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cook="~/Desktop/code"
-alias sd='cd $(find ~ -mindepth 1 -maxdepth 5 -type d | fzf --margin 2,5 || echo .)'
+alias sd='cd $(find ~ -mindepth 1 -maxdepth 5 -type d | fzf --margin=2,5 || echo .)'
+
+
+if [[ $(tmux list-sessions 2> /dev/null | wc -l) -eq 0 ]] then
+    tmux new-session -A -s main
+else
+    tmux attach
+fi
